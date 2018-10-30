@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<td>Name</td>
-					<td><input type="text" name="name" /></td>
+					<td><input type="text" name="sname" /></td>
 				</tr>
 					<tr>
 					<td>Branch</td>
@@ -40,7 +40,7 @@
 				
 				<tr>
 					<td>Aggregate</td>
-					<td><input type="text" name="aggregate" /></td>
+					<td><input type="text" name="beaggregate" /></td>
 				</tr>
 				
 				<tr>
@@ -57,11 +57,11 @@
 				</tr>
 				<tr>
 					<td>Institute Name</td>
-					<td><input type="text" name="iname" /></td>
+					<td><input type="text" name="instituteName" /></td>
 				</tr>
 				<tr>
 					<td>Phone Number</td>
-					<td><input type="text" name="pnum" /></td>
+					<td><input type="text" name="phone" /></td>
 				</tr>
 				<tr>
 					<td>Email</td>
@@ -74,8 +74,7 @@
 			
 			</form>
 			
-			<form method="post" action="StudentHome1.jsp"><br>
-			<input type="submit" name="view" value="View" /></form>
+			
 			<br>
 			<form method="post" action="Logout">
 			<input type="submit" name="logout" value="Logout" /></form>

@@ -12,7 +12,9 @@ import javax.servlet.http.HttpSession;
 //import com.dao.StudentDaoImpl;
 //import com.model.Student;
 
+import com.dao.CompanyDaoImpl;
 import com.dao.StudentDaoImpl;
+import com.model.Company;
 import com.model.Student;
 
 /**
@@ -40,11 +42,11 @@ public class LoginChecker extends HttpServlet {
 		String pwd = request.getParameter("password");
 		
 		try{
-		
+			
 			if(sid_in_string.equals(new String("admin"))&&pwd.equals("admin"))
 			{
 				HttpSession session = request.getSession(true);
-
+				//session.setAttribute("company", company);
 				//Student student = new StudentDaoImpl().getStudent(sidInt);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("AdminHome.jsp");
 				requestDispatcher.forward(request, response);

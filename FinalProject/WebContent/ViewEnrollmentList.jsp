@@ -1,20 +1,23 @@
 
+<%@page import="com.dao.EnrollmentDaoImpl"%>
+<%@page import="com.model.Company"%>
 <%@page import="com.model.Student"%>
+<%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Students Details..</title>
+<title>Insert title here</title>
 </head>
 <body>
 
 <%
 session = request.getSession(true);
-Student student = (Student)session.getAttribute("student");
-
+Student student=(Student)session.getAttribute("student");
+List<Company> companyList = new EnrollmentDaoImpl().companiesEnrolledByStudent(student.getSid());
 %>
 
 <div align="center">
@@ -24,7 +27,6 @@ Student student = (Student)session.getAttribute("student");
 	<table border = 1>
 	<tr>
 		<th>Student ID </th>
-		<th>Password </th>
 		<th>Name </th>
 		<th>Branch </th>
 		<th>SSC </th>
@@ -36,11 +38,11 @@ Student student = (Student)session.getAttribute("student");
 		<th>Institute Name </th>
 		<th>Phone Number </th>
 		<th>Email </th>
+		<th>Companies Enrollment</th>
 	</tr>
 	
 	<tr>
 		<td> <%=student.getSid() %> </td>
-	<td> <%=student.getPassword() %> </td>
 	<td>  <%=student.getSname() %> </td>
 	<td><%=student.getBranch() %></td>
 	<td> <%=student.getSsc() %> </td>
@@ -52,24 +54,35 @@ Student student = (Student)session.getAttribute("student");
 	<td ><%=student.getInstituteName() %> </td>
 	<td ><%=student.getPhone() %> </td>
 	<td ><%=student.getEmail() %> </td>	
+	<td> <%=companyList.size() %>
 	</tr>
 		
+<% for(Company company : companyList)
+{
+%>
+	<tr>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> <%=company.getCname() %>
+	
+	</tr>	
+<% 	
+}
+%>
+	
 </table>
 
 <br><br>
 
-<form method="post" action="UpdateStudent.jsp">
-	<input type="submit" name="update" value="Update" /> <br> <br></form>
-	
-	<form method="post" action="ApplyEnrollment.jsp">
-	<input type="submit" name="applyenrollment" value="Click Here For Enrollment" /> <br> <br></form>
-	
-	<form method="post" action="ViewEnrollmentList.jsp">
-	<input type="submit" name="viewenrollment" value="View Enrollment" /> <br> <br></form>
-	
-	<form method="post" action="Logout">
-			<input type="submit" name="logout" value="Logout" /></form>
-	
-</div>
 </body>
 </html>
