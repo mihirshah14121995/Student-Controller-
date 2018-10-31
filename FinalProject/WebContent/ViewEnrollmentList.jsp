@@ -1,4 +1,6 @@
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.service.EnrollmentServiceImpl"%>
 <%@page import="com.dao.EnrollmentDaoImpl"%>
 <%@page import="com.model.Company"%>
 <%@page import="com.model.Student"%>
@@ -17,7 +19,11 @@
 <%
 session = request.getSession(true);
 Student student=(Student)session.getAttribute("student");
-List<Company> companyList = new EnrollmentDaoImpl().companiesEnrolledByStudent(student.getSid());
+
+List<Company> companyList = (ArrayList<Company>)session.getAttribute("companiesEnrolledbystudent");
+
+//Student student=(Student)session.getAttribute("student");
+//List<Company> companyList = new EnrollmentServiceImpl().companiesEnrolledByStudentService(student.getSid());
 %>
 
 <div align="center">

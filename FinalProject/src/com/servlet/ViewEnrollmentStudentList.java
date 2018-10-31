@@ -1,6 +1,7 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,31 +11,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dao.CompanyDaoImpl;
-import com.dao.EnrollmentDaoImpl;
-import com.dao.StudentDaoImpl;
 import com.model.Company;
 import com.model.Student;
+import com.service.EnrollmentService;
 import com.service.EnrollmentServiceImpl;
 
 /**
- * Servlet implementation class Enrollment
+ * Servlet implementation class ViewEnrollmentStudentList
  */
-@WebServlet("/Enrollment")
-public class Enrollment extends HttpServlet {
+@WebServlet("/ViewEnrollmentStudentList")
+public class ViewEnrollmentStudentList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Enrollment() {
+    public ViewEnrollmentStudentList() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	public Enrollment(Student student, Company company) {
-		// TODO Auto-generated constructor stub
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -44,23 +39,18 @@ public class Enrollment extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		HttpSession session = request.getSession(true);
-		Object studentobj=session.getAttribute("student");
-		Student student=(Student)studentobj;
+//		String studentId = request.getParameter("sid");
+//		
+//		int sid = Integer.parseInt(studentId);
+		Object studentObject=session.getAttribute("student");
+		Student student=(Student)studentObject;
 		
+		EnrollmentService enrollmentService = new EnrollmentServiceImpl();
+		List<Company> companiesEnrolledbystudent = enrollmentService.companiesEnrolledByStudentService(student.getSid());
 		
-		
-		String temp_eid = request.getParameter("eid");
-		int eid = Integer.parseInt(temp_eid);
-		String companyid = request.getParameter("cid");
-		int cid = Integer.parseInt(companyid);
-		
-//		Enrollment new_enrollment = new Enrollment(new StudentDaoImpl().getStudent(sid),new CompanyDaoImpl().getCompany(cid));
-		boolean addEnrollmentService = new EnrollmentServiceImpl().addEnrollmentService(student,new CompanyDaoImpl().getCompany(cid));
-	//	session.setAttribute("student", new_enrollment);
-		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("StudentHome1.jsp");
+		session.setAttribute("companiesEnrolledbystudent", companiesEnrolledbystudent);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("ViewEnrollmentList.jsp");
 		requestDispatcher.forward(request, response);
-	
 	}
 
 	/**

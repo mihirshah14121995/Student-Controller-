@@ -7,15 +7,15 @@
 <title>Enrollment</title>
 </head>
 <body>
-<!-- 
+ 
 <div align = "center"><h1>Enrollment</h1> </div>
 
 <div align = "center">
 <form action="Enrollment" method="post">
 			<table style="with: 50%">
 				<tr>
-					<td>Student Id</td>
-					<td><input type="text" name="sid" /></td>
+					<td>Enrollment Id</td>
+					<td><input type="text" name="eid" /></td>
 				</tr>
 				
 				<tr>
@@ -28,12 +28,8 @@
 			<input type="submit" value="Submit" />
 			</form>
 </div>
- -->
- <form action="Enrollment" method="post">
- <input type="text" name="eid">
- <input type="text" name="cid">
- <input type="submit" value="submit">
- </form>
+ 
+ 
  
  
 </body>

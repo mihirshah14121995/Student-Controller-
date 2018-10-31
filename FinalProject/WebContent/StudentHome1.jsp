@@ -64,8 +64,8 @@ Student student = (Student)session.getAttribute("student");
 	<form method="post" action="ApplyEnrollment.jsp">
 	<input type="submit" name="applyenrollment" value="Click Here For Enrollment" /> <br> <br></form>
 	
-	<form method="post" action="ViewEnrollmentList.jsp">
-	<input type="submit" name="viewenrollment" value="View Enrollment" /> <br> <br></form>
+	<form method="post" action="ViewEnrollmentStudentList">
+	<input type="submit" name="ViewEnrollmentStudent" value="View Enrollment" /> <br> <br></form>
 	
 	<form method="post" action="Logout">
 			<input type="submit" name="logout" value="Logout" /></form>
